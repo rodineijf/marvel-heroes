@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Marvel Heroes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-image">
+
+  <p [innerHtml]="attribution" ion-text text-center></p>
+
+  <ion-list>
+    <ion-item *ngFor="let hero of heroesList" navPush="HeroDetailsPage" [navParams]="{hero: hero}" class="bg-image">
+      <ion-avatar item-start>
+        <img [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension">
+      </ion-avatar>
+      <h3>
+        {{ hero.name }}
+      </h3>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

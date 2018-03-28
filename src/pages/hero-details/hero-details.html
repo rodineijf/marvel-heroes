@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{hero.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-image">
+  <ion-grid>
+
+    <ion-row text-center align-items-center>
+      <ion-col col-6>
+        {{ hero.name }}
+      </ion-col>
+      <ion-col col-6>
+        <img class="thumbnail" [src]="hero.thumbnail.path + '.' + hero.thumbnail.extension">
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-row *ngIf="hero.comics.items.length > 0" padding-top>
+      <ion-col col-12 text-center>
+        Appeared in this comics
+      </ion-col>
+      <ion-col col-6 *ngFor="let comic of comics">
+        <img [src]="comic.thumbnail">
+        <p>{{comic.title}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="hero.comics.items.length === 0" padding-top>
+      <ion-col col-12 text-center>
+        This character hasn't appeared on any comics
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
