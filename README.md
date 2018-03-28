@@ -9,7 +9,8 @@ Steps to run this app on browser:
 ```sh
 $ npm i -g ionic cordova
 $ cd /path-to-repository/
-$ ionic server # or "ionic lab" if you prefer
+$ npm install
+$ ionic serve # or "ionic lab" if you prefer
 ```
 
 To run this app on device you need to follow this instructions:
