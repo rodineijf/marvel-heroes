@@ -82,6 +82,7 @@ export class HeroesListPage {
     this.search$
       .pipe(
         switchMap(() => {
+          this.offset = 0;
           return this.marvelProvider.fetchCharacters(this.offset, this.search);
         }),
         finalize(() => {})
