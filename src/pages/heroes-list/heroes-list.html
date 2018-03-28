@@ -1,6 +1,14 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Marvel Heroes</ion-title>
+    <ion-title *ngIf="!isSearching">Marvel Heroes</ion-title>
+    <ion-searchbar (ionCancel)="cancelSearch()" (ionInput)="doSearch($event)" [(ngModel)]="search" *ngIf="isSearching" placeholder="Search"
+      showCancelButton="true">
+    </ion-searchbar>
+    <ion-buttons end *ngIf="!isSearching">
+      <button ion-button icon-only (click)="isSearching = true">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

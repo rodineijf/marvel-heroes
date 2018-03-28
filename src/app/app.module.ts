@@ -6,6 +6,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 
 import { MarvelProvider } from "../providers/marvel/marvel";
+import { UiHelperProvider } from "../providers/ui-helper/ui-helper";
 import { MyApp } from "./app.component";
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MyApp } from "./app.component";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    MarvelProvider
+    MarvelProvider,
+    UiHelperProvider
   ]
 })
 export class AppModule {}

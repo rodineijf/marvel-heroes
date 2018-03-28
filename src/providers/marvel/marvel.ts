@@ -13,22 +13,30 @@ export class MarvelProvider {
 
   constructor(public http: HttpClient) {}
 
-  fetchCharacters(offset: number = 0) {
+  fetchCharacters(offset: number = 0, nameStartsWith: string = null) {
+    const params: any = {
+      ...this._authorization,
+      limit: this.CHARACTER_LIST_LIMIT + "",
+      offset: offset + ""
+    };
+
+    if (nameStartsWith) {
+      params.nameStartsWith = nameStartsWith;
+    }
+
     return this.http
       .get<Hero>("https://gateway.marvel.com:443/v1/public/characters", {
-        params: {
-          ...this._authorization,
-          limit: this.CHARACTER_LIST_LIMIT + "",
-          offset: offset + ""
-        }
+        params
       })
       .pipe(take(1));
   }
 
   fetchResource(resourceUri: string) {
-    return this.http.get<Hero>(resourceUri, {
-      params: { ...this._authorization }
-    });
+    return this.http
+      .get<any>(resourceUri, {
+        params: { ...this._authorization }
+      })
+      .pipe(take(1));
   }
 
   private get _authorization() {
