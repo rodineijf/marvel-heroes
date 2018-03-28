@@ -25,6 +25,11 @@
         {{ hero.name }}
       </h3>
     </ion-item>
+
+    <p *ngIf="heroesList?.length === 0" text-center ion-text padding>
+      We can't find any character with this name
+    </p>
+
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
